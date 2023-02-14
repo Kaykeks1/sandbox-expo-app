@@ -64,7 +64,7 @@ const HomeScreen = () => {
         />
         <FeaturedRows
           title="Offer near you!"
-          description="Paid placements from our partners"
+          description="Why not support your local restaurant tonight!"
           id="12345"
         />
       </ScrollView>
