@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from "react-native-heroicons/outline";
 import Categories from '../components/Categories';
+import FeaturedRows from '../components/FeaturedRows';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -50,6 +51,22 @@ const HomeScreen = () => {
         className="bg-gray-100"
       >
         <Categories />
+
+        <FeaturedRows
+          title="Featured"
+          description="Paid placements from our partners"
+          id="123"
+        />
+        <FeaturedRows
+          title="Tasty Discounts"
+          description="Everyone's been enjoying these juicy discounts"
+          id="1234"
+        />
+        <FeaturedRows
+          title="Offer near you!"
+          description="Paid placements from our partners"
+          id="12345"
+        />
       </ScrollView>
     </SafeAreaView>
   )
