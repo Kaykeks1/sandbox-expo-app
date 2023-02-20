@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import CategoryCard from './CategoryCard'
-import client, { useFor } from '../sanity'
+import client, { urlFor } from '../sanity'
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -21,7 +21,7 @@ const Categories = () => {
         showsHorizontalScrollIndicator={false}
     >
       {categories?.map(category => (
-        <CategoryCard key={category._id} imgUrl={useFor(category.image).width(200).url()} title={category.name} />
+        <CategoryCard key={category._id} imgUrl={urlFor(category.image).width(200).url()} title={category.name} />
       ))}
         {/* <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
         <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
