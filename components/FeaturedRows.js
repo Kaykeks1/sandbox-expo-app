@@ -1,9 +1,26 @@
 import { View, Text, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import RestaurantCard from './RestaurantCard'
+import client from '../sanity';
 
 const FeaturedRows = ({title, description, id}) => {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    client.fetch(`*[_type == "featured" && _id == $id] {
+      ...,
+      restaurants[]->{
+        ...,
+        dishes[]->,
+        type-> {
+          name
+        }
+      }
+    }[0]`, { id }).then(data => {
+      setRestaurants(data?.restaurants)
+    }).catch(e => console.log({e}))
+  }, [id])
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -20,7 +37,13 @@ const FeaturedRows = ({title, description, id}) => {
         showsHorizontalScrollIndicator={false}
         className="pt-4"
       >
-        <RestaurantCard
+        {restaurants?.map(restaurant => (
+          <RestaurantCard
+            key={restaurant._id} id={restaurant._id} imgUrl={restaurant.image} title={restaurant.name} rating={restaurant.rating} genre={restaurant.type?.name} address={restaurant.address}
+            short_description={restaurant.short_description} dishes={restaurant.dishes} long={restaurant.long} lat={restaurant.lat}
+          />
+        ))}
+        {/* <RestaurantCard
           id={123} imgUrl="https://links.papareact.com/gn7" title="Yo! Sushi" rating={4.5} genre="Japanese" address="123 Main St"
           short_description="This is a test description" dishes={[]} long={20} lat={0}
         />
@@ -31,7 +54,7 @@ const FeaturedRows = ({title, description, id}) => {
         <RestaurantCard
           id={123} imgUrl="https://links.papareact.com/gn7" title="Yo! Sushi" rating={4.5} genre="Japanese" address="123 Main St"
           short_description="This is a test description" dishes={[]} long={20} lat={0}
-        />
+        /> */}
       </ScrollView>
     </View>
   )
