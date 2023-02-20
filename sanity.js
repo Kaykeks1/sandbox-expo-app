@@ -9,7 +9,7 @@ const client = createClient({
 })
 
 const builder = imageUrlBuilder(client)
-export const useFor = (source) => builder.image(source)
+export const urlFor = (source) => builder.image(source)
 
 // Run this to add cors origin
 // sanity cors add http://localhost:3000
