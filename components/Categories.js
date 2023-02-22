@@ -23,12 +23,6 @@ const Categories = () => {
       {categories?.map(category => (
         <CategoryCard key={category._id} imgUrl={urlFor(category.image).width(200).url()} title={category.name} />
       ))}
-        {/* <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
-        <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
-        <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
-        <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
-        <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" />
-        <CategoryCard imgUrl="https://links.papareact.com/gn7" title="Testing" /> */}
     </ScrollView>
   )
 }
