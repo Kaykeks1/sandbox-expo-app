@@ -1,7 +1,6 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useRoute, useNavigation } from '@react-navigation/native'
-// import { ArrowLeftIcon } from 'react-native-heroicons/solid'
 import { 
   ArrowLeftIcon,
   ChevronRightIcon,
